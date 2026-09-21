@@ -1,0 +1,21 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+dependency-reduced-pom.xml
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse / VS Code
+.classpath
+.project
+.settings/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
