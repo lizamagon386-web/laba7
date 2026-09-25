@@ -65,12 +65,8 @@ public class ServerRunner implements Runnable {
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
                         PacketReceiver.ReceivedPacket packet = receiver.receive();
-
-                        // Пункт 2: обработка полученного запроса — в новом потоке.
                         Thread processingThread = new Thread(() -> {
                             CommandResponse response = processor.process(packet.request());
-
-                            // Пункт 3: отправка ответа — тоже в новом потоке.
                             Thread sendingThread = new Thread(() -> {
                                 try {
                                     sender.send(response, packet.address(), packet.port());
@@ -83,7 +79,6 @@ public class ServerRunner implements Runnable {
                         processingThread.start();
 
                     } catch (java.net.SocketTimeoutException ignored) {
-                        // нормальная ситуация — таймаут ожидания пакета, продолжаем цикл
                     } catch (Exception e) {
                         logger.log(Level.SEVERE, "Ошибка при обработке запроса", e);
                     }

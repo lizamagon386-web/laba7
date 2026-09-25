@@ -359,8 +359,6 @@ public class CommandLine implements Runnable {
                 continue;
             }
 
-            // Регистрация не выдаёт сессию, поэтому сразу выполняем вход
-            // с теми же данными — так пользователь попадает в систему за один шаг.
             if (type == CommandType.REGISTER) {
                 System.out.println(response.result());
                 try {
@@ -389,8 +387,6 @@ public class CommandLine implements Runnable {
         Scanner lineScanner;
         List<String> args = new ArrayList<>();
 
-        // Пока пользователь не вошёл в систему, команды не отправляются
-        // (п.7 задания: неавторизованным пользователям команды запрещены).
         if (!authorize()) return;
 
         while (true) {

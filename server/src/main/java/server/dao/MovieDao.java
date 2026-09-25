@@ -152,7 +152,7 @@ public class MovieDao {
         }
     }
 
-    /** Привязывает поля сценариста (Person) к PreparedStatement, начиная с индекса startIndex (8 параметров). */
+    /** Привязывает поля сценариста (Person) к PreparedStatement */
     private void bindScreenwriter(PreparedStatement ps, int startIndex, Person p) throws SQLException {
         if (p != null) {
             ps.setString(startIndex, p.name());
